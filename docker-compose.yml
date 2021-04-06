@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+ #A decommenter pour faire un build local de la partie python
+ # web:
+  #  build: .
+   #" container_name: app
+  
+  python:
+    image: aminavero/pyth:first
+    container_name: container1
+    
+  tclsh:
+    image: efrecon/mini-tcl
+    container_name: container2
+  
+  prolog:
+    image: swipl  
+    container_name: container3
+
+       

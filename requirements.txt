@@ -1,0 +1,10 @@
+PyOpenGL
+Tensorflow
+keras
+torch==1.7.1
+h5py
+matplotlib
+numpy
+pandas
+elmoformanylangs
+gensim
