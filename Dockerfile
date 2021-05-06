@@ -1,16 +1,17 @@
-FROM debian:9
+FROM python:3.8 AS base
 
-RUN apt-get update -yq \
-&& apt-get install curl gnupg -yq \
-&& curl -sL https://deb.nodesource.com/setup_10.x | bash \
-&& apt-get install nodejs -yq \
-&& apt-get clean -y
+#Install packages
+RUN apt-get -y update
+RUN apt-get -y install vim
 
-ADD . /app/
+FROM base AS requirements
+
 WORKDIR /app
-RUN npm install
 
-EXPOSE 2368
-VOLUME /app/logs
+COPY requirements.txt /app
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD npm run start
+COPY . /app
+VOLUME /app
+
+RUN python ELMoForManyLangs/setup.py install
